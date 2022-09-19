@@ -39,15 +39,22 @@ export default function InputForm() {
         setData((d)=>{
             return[
                 
-                    ...d,
-                    {name:name,
-                    age:age}
+                ...d,
+                {
+                    name:name,
+                    age:age,
+                    id: Math.random().toString() ,
+                }
                 
             ]
 
         })
         setAge('');
         setName('');
+    }
+
+    const deleteHandler = (id)=>{
+        setData(data.filter((item) => item.id !== id));
     }
 
   return (
@@ -79,10 +86,11 @@ export default function InputForm() {
       <p>
       <button className="w3-btn w3-brown" type='submit'>Add User</button></p>
     </form>
-    {data===null?'No Data Found':data.map((d)=>{
+    {data.length===0?'No Data Found':data.map((d)=>{
         return(
-            <div class="w3-panel w3-yellow ">
+            <div className="w3-panel w3-yellow " key={d.id} onClick={()=>deleteHandler(d.id)}>
             <p className='w3-sans-serif w3-wide w3-medium w3-padding-12' style={{textAlign:'left'}}>{`${d.name} is ${d.age} year old`}</p>
+            
             </div>
         )
     })}
