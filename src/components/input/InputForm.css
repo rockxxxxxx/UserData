@@ -1,0 +1,12 @@
+.w3-card-4{
+    width: 50%;
+    margin:auto;
+
+}
+.form-body{
+    background-color: aliceblue;
+    text-align: left;
+}
+.err{
+    color: red;
+}
